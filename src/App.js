@@ -1,10 +1,11 @@
-import FilterComponent from './components/FilterComponent';
+import Employe from './components/Employe';
+
 
 
 function App() {
   return (
     <div className="App">
-     <FilterComponent/>
+     <Employe/>
     </div>
   );
 }
