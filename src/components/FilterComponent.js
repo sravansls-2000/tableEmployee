@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from './Card';
+import axios from 'axios';
 
-const FilterComponent = (props) => {
-const {countryList} =props;
+
+const FilterComponent = () => {
+
+const [countryList,setCountryList]=useState([])
 const regionList = ["Africa","Americas","Oceania","Asia","Europe"]
 const countryNames = countryList.map(obj => obj);
-
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+const [searchQuery, setSearchQuery] = useState('');
+const [searchResults, setSearchResults] = useState([]);
+const finalResult =(!searchResults?countryList:searchResults)
+  console.log(finalResult)
+  useEffect(() => {
+    axios.get("https://restcountries.com/v3.1/all")
+    .then((response)=>{
+      setCountryList(response.data)
+      
+    })
+  }, [])
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -37,7 +48,7 @@ const countryNames = countryList.map(obj => obj);
 
   return (
     <div>
-      <div className='input elements'>
+      <div className='inputElements'>
         <input
         id="oneCountry"
           onChange={handleChange}
@@ -53,10 +64,12 @@ const countryNames = countryList.map(obj => obj);
        </select>
       </div>
 
+      <div className="card-container">
       
-        {searchResults.map((result, index) => (
+        {finalResult?.map((result, index) => (
           <Card key={index} countryDetail={result} />
         ))}
+ </div>
   
     </div>
   );
