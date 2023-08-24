@@ -11,7 +11,7 @@ const countryNames = countryList.map(obj => obj);
 const [searchQuery, setSearchQuery] = useState('');
 const [searchResults, setSearchResults] = useState([]);
 const finalResult =(!searchResults?countryList:searchResults)
-  console.log(finalResult)
+
   useEffect(() => {
     axios.get("https://restcountries.com/v3.1/all")
     .then((response)=>{
