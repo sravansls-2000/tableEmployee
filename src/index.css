@@ -11,3 +11,61 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+.card {
+  width: 300px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-content {
+  padding: 16px;
+}
+
+.card-content h2 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.card-content p {
+  margin: 0;
+  color: #666666;
+}
+
+
+input {
+  width: 200px;
+  height: 40px;
+  align-items: left;
+}
+
+select{
+
+    width: 200px;
+    height: 40px;
+    align-items: left;
+  
+}
+
+option {
+  width: 200px;
+  height: 40px;
+  align-items: left;
+}
