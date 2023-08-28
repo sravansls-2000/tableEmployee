@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
 import './emp.css'
+import { useNavigate } from 'react-router'
 
-function Employe() {
-const [update,setUpdate]=useState({
-    name:"",
-    employee_id:"",
-    company:"",
-    salary:""
-})
-const [employeeDet]=useState([{name:"sravankumar",employee_id:"23838",company:"cognizant",salary:"10000"},{name:"sravankumar",employee_id:"23838",company:"cognizant",salary:"10000"},{name:"sravankumar",employee_id:"23838",company:"cognizant",salary:"10000"},{name:"sravankumar",employee_id:"23838",company:"cognizant",salary:"10000"},{name:"sravankumar",employee_id:"23838",company:"cognizant",salary:"10000"}])
-const handleChange=(e)=>{
-console.log(e.target.value)
+function Employe({employeeDet,DeleteItem,EditItem}) {
+    
+const Navigate = useNavigate();
+const deleteClick =(id)=>{
+
+    DeleteItem(id)
 }
+const EditClick =(id)=>{
+    
+    EditItem(id)
+  }
+
   return (
     <div className="table-wrapper">
     <table className="table">
@@ -31,12 +33,17 @@ console.log(e.target.value)
               <td>{employee.employee_id}</td>
               <td>{employee.company}</td>
               <td>{employee.salary}</td>
+              <td>
+                <button >edit</button>
+                <button className='delete-btn' onClick={()=>{deleteClick(index)}}>X</button>
+
+                
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <button>Add</button>
     </div>
   )
 }
